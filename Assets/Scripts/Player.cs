@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     float speed = 2f;
+    float xLimit = 9.5f;
+    float yLimit = 3.5f;
     Vector2 moveVal;
     Rigidbody2D rb;
 
@@ -31,4 +33,11 @@ public class Player : MonoBehaviour
     void OnMove(InputValue value){
         moveVal = value.Get<Vector2>();
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.name == "Prey"){
+            other.gameObject.transform.position = new Vector2(Random.Range(-xLimit,xLimit), Random.Range(-yLimit,yLimit));
+        }
+    }
+
 }
