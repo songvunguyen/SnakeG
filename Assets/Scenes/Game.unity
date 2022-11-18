@@ -3193,6 +3193,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1536679731, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4078031375084331515}
+    - target: {fileID: 1536679731, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536679731, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503035957201643246, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 1908415085}
     - target: {fileID: 6682232318881912702, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
       propertyPath: m_Name
       value: UIOverlay

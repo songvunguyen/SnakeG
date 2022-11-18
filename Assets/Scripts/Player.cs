@@ -36,13 +36,16 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        
         if(other.gameObject.name == "Prey"){
             ui.UpdateScroe();
             ui.UpdateSpeed();
             speed += 0.1f;
             other.gameObject.transform.position = new Vector2(Random.Range(-xLimit,xLimit), Random.Range(-yLimit,yLimit));
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        ui.GameOver();
     }
 
 }

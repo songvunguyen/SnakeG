@@ -7,10 +7,12 @@ using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    public GameObject play;
-    public GameObject about;
-    public GameObject ins;
-    public GameObject back;
+    GameObject play;
+    GameObject about;
+    GameObject ins;
+    GameObject back;
+    GameObject game;
+    GameObject go;
     TextMeshProUGUI sc;
     TextMeshProUGUI sp;
     int score = 0;
@@ -18,8 +20,18 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sc = GameObject.Find("UIOverlay/Score").GetComponent<TextMeshProUGUI>();
-        sp = GameObject.Find("UIOverlay/Speed").GetComponent<TextMeshProUGUI>();
+        if(SceneManager.GetActiveScene().name == "Game"){
+            sc = GameObject.Find("UIOverlay/Score").GetComponent<TextMeshProUGUI>();
+            sp = GameObject.Find("UIOverlay/Speed").GetComponent<TextMeshProUGUI>();
+            go = GameObject.Find("UIOverlay/GameOver");
+            game = GameObject.Find("Game");
+        }else if(SceneManager.GetActiveScene().name == "MainMenu"){
+            play = GameObject.Find("Menu/PlayButton");
+            about = GameObject.Find("Menu/About");
+            ins = GameObject.Find("Menu/HowTo");
+            back = GameObject.Find("Menu/Back");
+        }
+       
     }
 
     // Update is called once per frame
@@ -30,6 +42,14 @@ public class UIController : MonoBehaviour
 
     public void StartGame(){
         SceneManager.LoadScene("Game");
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void MainMenu(){
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void About(){
@@ -54,5 +74,12 @@ public class UIController : MonoBehaviour
     public void UpdateSpeed(){
         speed += 0.1f;
         sp.text = "Speed: +" + Math.Round(speed,1);
+    }
+
+    public void GameOver(){
+        speed = 0;
+        score = 0;
+        game.SetActive(false);
+        go.SetActive(true);
     }
 }
