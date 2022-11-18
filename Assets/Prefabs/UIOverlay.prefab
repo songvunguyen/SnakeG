@@ -715,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Speed +0.1
+  m_text: Speed +0.0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 558145edf5c3ac99d812d8386b664d63, type: 2}
   m_sharedMaterial: {fileID: -1470900128676131322, guid: 558145edf5c3ac99d812d8386b664d63, type: 2}
@@ -934,7 +934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3786774650868916267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -970,6 +970,7 @@ GameObject:
   - component: {fileID: 8644290968301417969}
   - component: {fileID: 6431344657218891123}
   - component: {fileID: 6562059740289609407}
+  - component: {fileID: 4503035957201643246}
   m_Layer: 5
   m_Name: UIOverlay
   m_TagString: Untagged
@@ -1061,3 +1062,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4503035957201643246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682232318881912702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf607e0dd866073baafe3fc898b4404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  play: {fileID: 0}
+  about: {fileID: 0}
+  ins: {fileID: 0}
+  back: {fileID: 0}

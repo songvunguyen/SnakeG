@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     float yLimit = 3.5f;
     Vector2 moveVal;
     Rigidbody2D rb;
+    public UIController ui;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +36,11 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        
         if(other.gameObject.name == "Prey"){
+            ui.UpdateScroe();
+            ui.UpdateSpeed();
+            speed += 0.1f;
             other.gameObject.transform.position = new Vector2(Random.Range(-xLimit,xLimit), Random.Range(-yLimit,yLimit));
         }
     }
