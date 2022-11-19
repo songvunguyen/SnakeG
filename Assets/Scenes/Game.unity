@@ -3209,6 +3209,10 @@ PrefabInstance:
       propertyPath: game
       value: 
       objectReference: {fileID: 1908415085}
+    - target: {fileID: 6618400740401336471, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6682232318881912702, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
       propertyPath: m_Name
       value: UIOverlay

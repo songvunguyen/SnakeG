@@ -346,8 +346,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4503035957201643246, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+      - m_Target: {fileID: 1973062602}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -615,8 +615,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4503035957201643246, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+      - m_Target: {fileID: 1973062602}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
         m_Arguments:
@@ -817,8 +817,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4503035957201643246, guid: bd34a88c83355a5a3b218942241d28c6, type: 3}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+      - m_Target: {fileID: 1973062602}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: About
         m_Mode: 1
         m_Arguments:
@@ -1309,6 +1309,7 @@ GameObject:
   - component: {fileID: 1973062600}
   - component: {fileID: 1973062599}
   - component: {fileID: 1973062598}
+  - component: {fileID: 1973062602}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1403,6 +1404,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1973062602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973062597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca72de1620e8361d8845647b29be413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  play: {fileID: 943528265}
+  about: {fileID: 1557601748}
+  ins: {fileID: 98523029}
+  back: {fileID: 1257801874}
 --- !u!1 &2100759656
 GameObject:
   m_ObjectHideFlags: 0
