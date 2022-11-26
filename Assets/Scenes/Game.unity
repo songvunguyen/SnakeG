@@ -3131,6 +3131,10 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 4078031375084331515}
+    - target: {fileID: 952231620909849845, guid: f05d960327202bf6e846ca862dde4041, type: 3}
+      propertyPath: bodyPrefab
+      value: 
+      objectReference: {fileID: 2056935955049989081, guid: 852bae0bc70440df0bc98197f7130f9f, type: 3}
     - target: {fileID: 3527726260463710336, guid: f05d960327202bf6e846ca862dde4041, type: 3}
       propertyPath: m_RootOrder
       value: 0

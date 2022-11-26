@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class Player : MonoBehaviour
     Vector2 moveVal;
     Rigidbody2D rb;
     public UIController ui;
+
+    bool ate = false;
+    //Snake body prefab
+    public GameObject bodyPrefab;
+    //Keep track of position of the body
+    List<Transform> body = new List<Transform>();
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +33,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() {
         if(moveVal != Vector2.zero){
+            Vector2 prevPos = transform.position;
             rb.velocity = new Vector2(moveVal.x * speed, moveVal.y * speed);
-        }
-        
+            bodyMove(prevPos);
+        }  
     }
 
     void OnMove(InputValue value){
@@ -41,11 +49,32 @@ public class Player : MonoBehaviour
             ui.UpdateSpeed();
             speed += 0.1f;
             other.gameObject.transform.position = new Vector2(Random.Range(-xLimit,xLimit), Random.Range(-yLimit,yLimit));
+            ate = true;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        ui.GameOver();
+    // private void OnCollisionEnter2D(Collision2D other) {
+    //     ui.GameOver();
+    // }
+
+    private void bodyMove(Vector2 pos){
+        if(ate){
+            // Load Prefab into the world
+            GameObject g =(GameObject)Instantiate(bodyPrefab, transform.position - transform.forward, Quaternion.identity);
+
+            // Keep track of it in our tail list
+            body.Insert(0, g.transform);
+            ate = false;
+        }
+        // Do we have a Tail?
+        else if (body.Count > 0) {
+            // Move last Tail Element to where the Head was
+            body.Last().position = transform.position - transform.forward;
+
+            // Add to front of list, remove from the back
+            body.Insert(0, body.Last());
+            body.RemoveAt(body.Count-1);
+        }
     }
 
 }
