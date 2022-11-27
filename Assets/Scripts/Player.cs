@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     //Snake body prefab
     public GameObject bodyPrefab;
     //Keep track of position of the body
-    List<Transform> body = new List<Transform>();
+    List<GameObject> body = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +33,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() {
         if(moveVal != Vector2.zero){
-            Vector2 prevPos = transform.position;
-            rb.velocity = new Vector2(moveVal.x * speed, moveVal.y * speed);
-            bodyMove(prevPos);
+            bodyMove(rb.velocity);
+            rb.velocity = new Vector2(moveVal.x * speed, moveVal.y * speed); 
         }  
     }
 
@@ -47,7 +46,7 @@ public class Player : MonoBehaviour
         if(other.gameObject.name == "Prey"){
             ui.UpdateScore();
             ui.UpdateSpeed();
-            speed += 0.1f;
+            //speed += 0.1f;
             other.gameObject.transform.position = new Vector2(Random.Range(-xLimit,xLimit), Random.Range(-yLimit,yLimit));
             ate = true;
         }
@@ -59,21 +58,30 @@ public class Player : MonoBehaviour
 
     private void bodyMove(Vector2 pos){
         if(ate){
-            // Load Prefab into the world
-            GameObject g =(GameObject)Instantiate(bodyPrefab, transform.position - transform.forward, Quaternion.identity);
-
+            GameObject g;
+            if(body.Count == 0){
+                g =(GameObject)Instantiate(bodyPrefab, transform.position, Quaternion.identity);
+            }else{
+                GameObject bodyLast = body.Last();
+                // Load Prefab into the world
+                g =(GameObject)Instantiate(bodyPrefab, bodyLast.transform.position - bodyLast.transform.forward, Quaternion.identity);
+            }
+    
             // Keep track of it in our tail list
-            body.Insert(0, g.transform);
+            body.Insert(0, g);
             ate = false;
         }
         // Do we have a Tail?
         else if (body.Count > 0) {
+            Vector2 v;
+            foreach (GameObject g in body)
+            {
+                v = g.GetComponent<Rigidbody2D>().velocity;
+                g.GetComponent<Rigidbody2D>().velocity = pos;
+                pos = v;
+            }
             // Move last Tail Element to where the Head was
-            body.Last().position = transform.position - transform.forward;
-
-            // Add to front of list, remove from the back
-            body.Insert(0, body.Last());
-            body.RemoveAt(body.Count-1);
+            
         }
     }
 
