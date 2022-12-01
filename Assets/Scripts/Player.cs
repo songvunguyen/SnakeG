@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     Vector2 moveVal;
     Rigidbody2D rb;
     public UIController ui;
+    AudioSource eat;
+    AudioSource go;
 
     // bool ate = false;
     //Snake body prefab
@@ -47,12 +49,14 @@ public class Player : MonoBehaviour
             ui.UpdateScore();
             ui.UpdateSpeed();
             speed += 0.5f;
+            other.gameObject.GetComponent<AudioSource>().Play();
             other.gameObject.transform.position = new Vector2(Random.Range(-xLimit,xLimit), Random.Range(-yLimit,yLimit));
             // ate = true;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
+        ui.GetComponent<AudioSource>().Play();
         ui.GameOver();
     }
 
