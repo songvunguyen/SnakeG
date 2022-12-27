@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Player : MonoBehaviour
 {
-    float speed = 2f;
+    int length = 1;
     float xLimit = 9.5f;
     float yLimit = 3.5f;
     Vector2 moveVal;
@@ -78,11 +78,9 @@ public class Player : MonoBehaviour
         if(other.gameObject.name == "Prey"){
             ate = true;
             ui.UpdateScore();
-            ui.UpdateSpeed();
-            speed += 0.5f;
+            ui.UpdateLength(++length);
             other.gameObject.GetComponent<AudioSource>().Play();
             other.gameObject.transform.position = new Vector2(Random.Range(-xLimit,xLimit), Random.Range(-yLimit,yLimit));
-            // ate = true;
         }
     }
 

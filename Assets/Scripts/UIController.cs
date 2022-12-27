@@ -42,9 +42,8 @@ public class UIController : MonoBehaviour
         sc.text = "Score: " + score;
     }
 
-    public void UpdateSpeed(){
-        speed += 0.5f;
-        sp.text = "Speed: +" + Math.Round(speed,1);
+    public void UpdateLength(int l){
+        sp.text = "Length " + l;
     }
 
     public void GameOver(){
